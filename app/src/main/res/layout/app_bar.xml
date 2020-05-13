@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutheaderbase"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_appbar_orange"
+    app:cardElevation="5dp"
+    android:layout_marginBottom="5dp">
+
+    <LinearLayout
+        android:id="@+id/headerLayout"
+        android:layout_width="match_parent"
+        android:background="@color/orange"
+        android:layout_height="56dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        >
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_gravity="center"
+            android:layout_width="15dp"
+            android:layout_height="25dp"
+            android:padding="10dp"
+            android:background="@drawable/ic_back_white"/>
+
+        <TextView
+            android:id="@+id/headerText"
+            android:layout_weight="0.5"
+            android:padding="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/white"
+            android:text="@string/app_name"
+            android:gravity="center_vertical|left"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-light"
+            android:textStyle="bold"/>
+
+        <Button
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/btn_search"
+            android:layout_gravity="center"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_search_white"/>
+
+        <Button
+            android:id="@+id/btn_media"
+            android:layout_gravity="center"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/ic_map_view"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:visibility="gone"
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@id/headerLayout"/>
+
+</androidx.cardview.widget.CardView>

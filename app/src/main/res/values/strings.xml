@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">ScreeningPractice</string>
+    <string name="facebook_app_id">280622746302796</string>
+    <string name="fb_login_protocol_scheme">fb280622746302796</string>
+
+
+
+    <!-- App bar -->
+    <string name="txt_toolbar_title_event">EVENTS</string>
+    <string name="txt_toolbar_title_guest">GUESTS</string>
+
+    <!-- hint-->
+    <string name="txt_hint_name">Type name here..</string>
+    <string name="txt_hint_sentence">Type text palindrome</string>
+
+    <!-- Button-->
+    <string name="txt_button_next">Next</string>
+    <string name="txt_button_check">Check</string>
+    <string name="txt_button_event">Choose Event</string>
+    <string name="txt_button_guest">Choose Guest</string>
+    <string name="txt_button_signout">Sign Out</string>
+    <string name="txt_button_GoogleSignIn">Sign in with Google</string>
+    <string name="txt_button_FacebookSignIn">Sign in with Facebook</string>
+
+    <!--    txv-->
+    <string name="txt_name">Hallo,</string>
+    <string name="txt_detail">Lorem ipsum dolor sit amet, consectetur adipiscing... </string> <!--    elit. Suspendisse nunc mauris, eleifend nec tristique vitae, maximus id arcu. Morbi quis aliquet justo, vel porttitor lorem...-->
+    <string name="txt_title_activity_home">Welcome</string>
+    <string name="txt_subtitle_activity_home">This is app for suitmedia mobile developer test</string>
+
+
+    <string name="copyright">Copyright &#169; 2020 Suitmedia All rights reserved.</string>
+
+
+</resources>

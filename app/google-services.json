@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "960394708272",
+    "firebase_url": "https://screeningpractice.firebaseio.com",
+    "project_id": "screeningpractice",
+    "storage_bucket": "screeningpractice.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960394708272:android:dea4d4766d80f56220f4f5",
+        "android_client_info": {
+          "package_name": "com.devfk.ma.screeningpractice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960394708272-l2jd9qo0nppgv2ocs6kschhi6obfsacn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1bd7Vik3d84lLoJv04T9n4EyUxU_4qMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "960394708272-l2jd9qo0nppgv2ocs6kschhi6obfsacn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

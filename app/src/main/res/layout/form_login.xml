@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:elevation="5dp"
+    app:cardElevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/imgAvatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/img_avatar" />
+
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rounded_textfield_white"
+            android:hint="@string/txt_hint_name"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textSize="14dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/greys"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/etPalindrome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_rounded_textfield_white"
+            android:gravity="center"
+            android:hint="@string/txt_hint_sentence"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/greys"
+            android:layout_marginBottom="30dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            >
+
+            <Button
+                android:id="@+id/btnNext"
+                android:textAllCaps="false"
+                android:layout_weight="0.9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/bg_rounded_button_orange"
+                android:text="@string/txt_button_next"
+                android:textSize="18sp"
+                android:shadowDy="20"
+                android:shadowRadius="0"
+                android:outlineAmbientShadowColor="@color/black"
+                android:outlineProvider="background"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btnCheck"
+                android:textAllCaps="false"
+                android:layout_weight="0.2"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rounded_button_orange"
+                android:text="@string/txt_button_check"
+                android:textSize="18sp"
+                android:shadowDy="20"
+                android:shadowRadius="0"
+                android:outlineProvider="background"
+                android:outlineAmbientShadowColor="@color/black"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btnGoogleSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8sp"
+            android:text="@string/txt_button_GoogleSignIn"
+            />
+
+        <com.facebook.login.widget.LoginButton
+            xmlns:facebook="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/btnFacebookSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            facebook:com_facebook_login_text="@string/txt_button_FacebookSignIn"/>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

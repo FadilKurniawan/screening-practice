@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3D4043</color>
+    <color name="colorPrimaryDark">#93FF6F31</color>
+    <color name="colorAccent">#7F8CA0</color>
+
+    <color name="gold">#C5B457</color>
+    <color name="bg_homeTintOp">#93FF6F31</color>
+    <color name="orangeTint">#CD5400</color>
+    <color name="orange">#FF8635</color>
+    <color name="orangePressed">#D16E2A</color>
+    <color name="white">#FFFFFF</color>
+    <color name="greyLight">#E8E8E8</color>
+    <color name="grey">#D3D3D3</color>
+    <color name="greys">#ACACAC</color>
+    <color name="bluGrey">#7F8CA0</color>
+    <color name="greyDark">#505357</color>
+    <color name="black">#000000</color>
+    <color name="blackOp">#79000000</color>
+    <color name="greyOp">#79D3D3D3</color>
+</resources>
