@@ -1,6 +1,6 @@
 package com.devfk.ma.screeningpractice.data.service
 
-import com.devfk.ma.screeningpractice.data.Model.Data
+import com.devfk.ma.screeningpractice.data.Model.DataGuest
 import com.devfk.ma.screeningpractice.data.Model.Response
 import io.reactivex.Observable
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -14,7 +14,7 @@ interface APIService{
     fun getGuest(
         @Query("page") page:Int,
         @Query("per_page") per_page:Int
-    ): Observable<Response<Data>>
+    ): Observable<Response<DataGuest>>
 
     companion object Factory {
 

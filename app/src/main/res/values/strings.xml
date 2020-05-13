@@ -4,7 +4,6 @@
     <string name="fb_login_protocol_scheme">fb280622746302796</string>
 
 
-
     <!-- App bar -->
     <string name="txt_toolbar_title_event">EVENTS</string>
     <string name="txt_toolbar_title_guest">GUESTS</string>
@@ -24,12 +23,48 @@
 
     <!--    txv-->
     <string name="txt_name">Hallo,</string>
-    <string name="txt_detail">Lorem ipsum dolor sit amet, consectetur adipiscing... </string> <!--    elit. Suspendisse nunc mauris, eleifend nec tristique vitae, maximus id arcu. Morbi quis aliquet justo, vel porttitor lorem...-->
+    <string name="txt_detail_event_item">Lorem ipsum dolor sit amet, consectetur adipiscing... </string> <!--    elit. Suspendisse nunc mauris, eleifend nec tristique vitae, maximus id arcu. Morbi quis aliquet justo, vel porttitor lorem...-->
     <string name="txt_title_activity_home">Welcome</string>
     <string name="txt_subtitle_activity_home">This is app for suitmedia mobile developer test</string>
 
+    <string-array name="event_list_title">
+        <item> Pekan #KreatifDisaatSulit </item>
+        <item> Saturasi Volume 1 </item>
+        <item> Charity Selection Night </item>
+        <item> ANGKLUNG MUSIC CONCERT </item>
+    </string-array>
+
+    <string-array name="event_list_date">
+        <item> April 04 2020</item>
+        <item> April 03  2020</item>
+        <item> March 23 2020</item>
+        <item> March 20 2020</item>
+    </string-array>
+
+    <string-array name="event_list_lat">
+        <item>-6.901267</item>
+        <item>-6.910463</item>
+        <item>-6.908583</item>
+        <item>-6.917161</item>
+    </string-array>
+
+    <string-array name="event_list_long">
+        <item>107.618681</item>
+        <item>107.619621</item>
+        <item>107.616208</item>
+        <item>107.629460</item>
+    </string-array>
+
+    <string-array name="event_list_hashtag">
+        <item>#nutricia</item>
+        <item>#highlight F3</item>
+        <item>#event</item>
+    </string-array>
 
     <string name="copyright">Copyright &#169; 2020 Suitmedia All rights reserved.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

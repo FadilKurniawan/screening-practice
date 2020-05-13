@@ -5,7 +5,6 @@ import com.devfk.ma.screeningpractice.data.Model.Ad
 import com.google.gson.annotations.SerializedName
 
 data class Response<T>(
-
     @SerializedName("ad")
     val ad: Ad,
     @SerializedName("data")

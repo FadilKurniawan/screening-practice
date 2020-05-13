@@ -111,4 +111,15 @@
 
     </LinearLayout>
 
+    <include
+        android:id="@+id/loadview"
+        android:visibility="gone"
+        layout="@layout/loading_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="@+id/swipeContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerLayout" />
+
 </androidx.cardview.widget.CardView>

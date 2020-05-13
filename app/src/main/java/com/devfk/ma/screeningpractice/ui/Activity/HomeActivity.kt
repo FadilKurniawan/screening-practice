@@ -7,10 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.devfk.ma.screeningpractice.R
+import com.devfk.ma.screeningpractice.data.Model.User
 import com.devfk.ma.screeningpractice.ui.Component.CustomAlertDialog
 import com.facebook.AccessToken
 import com.facebook.login.LoginManager
 import com.google.firebase.auth.FirebaseAuth
+import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity(), View.OnClickListener{
@@ -23,6 +25,8 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener{
         }
     }
 
+    lateinit var realm: Realm
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -30,10 +34,13 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener{
     }
 
     private fun initialization() {
-        val user = FirebaseAuth.getInstance().currentUser
+        realm = Realm.getDefaultInstance()
+        val user = realm.where(User::class.java).findFirst()
         if (user != null) {
-            val str =user.displayName
+            val str =user.name
             txvName.text = str
+        }else{
+            signOut()
         }
         btnEvent.setOnClickListener(this)
         btnGuest.setOnClickListener(this)
@@ -104,18 +111,26 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener{
             return R.drawable.feature_phone
         }
     }
+
     private fun signOut() {
         val user = FirebaseAuth.getInstance().currentUser
+        deleteUser()
         if (user != null) {
-            startActivity(HomeActivity.getLaunchIntent(this))
             FirebaseAuth.getInstance().signOut()
         }
-        val accessToken: AccessToken? = AccessToken.getCurrentAccessToken()
-        val isLoggedIn = accessToken != null && !accessToken.isExpired()
-        if(isLoggedIn){
-            LoginManager.getInstance().logOut()
-            startActivity(HomeActivity.getLaunchIntent(this))
+        startActivity(MainActivity.getLaunchIntent(this))
+    }
+
+    private fun deleteUser() {
+        realm.executeTransaction{
+            realm.delete(User::class.java)
         }
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        realm.close()
     }
 }
 

@@ -12,7 +12,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.devfk.ma.screeningpractice.ui.Adapter.GuestAdapter
 import com.devfk.ma.screeningpractice.R
 import com.devfk.ma.screeningpractice.data.Interface.IGuest
-import com.devfk.ma.screeningpractice.data.Model.Data
+import com.devfk.ma.screeningpractice.data.Model.DataGuest
 import com.devfk.ma.screeningpractice.data.Model.Response
 import com.devfk.ma.screeningpractice.data.Presenter.GuestPresenter
 import kotlinx.android.synthetic.main.activity_guest.*
@@ -25,7 +25,7 @@ class GuestActivity : AppCompatActivity(), AdapterView.OnItemClickListener , IGu
     var per_pages = 10
     var total_pages:Int = 0
     var loadMore = false
-    var listData: ArrayList<Data> = ArrayList()
+    var listData: ArrayList<DataGuest> = ArrayList()
     lateinit var guestAdapter: GuestAdapter
     lateinit var swipe: SwipeRefreshLayout
 
@@ -97,13 +97,13 @@ class GuestActivity : AppCompatActivity(), AdapterView.OnItemClickListener , IGu
     }
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        var item: Data = parent?.getItemAtPosition(position) as Data
+        var item: DataGuest = parent?.getItemAtPosition(position) as DataGuest
         resultName = item.firstName + item.lastName
         resultAge = item.id!!
         onBackPressed()
     }
 
-    override fun onGuestList(guest: Response<Data>) {
+    override fun onGuestList(guest: Response<DataGuest>) {
         if(swipe.isRefreshing){
             swipe.isRefreshing = false
         }

@@ -11,10 +11,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.devfk.ma.screeningpractice.R
-import com.devfk.ma.screeningpractice.data.Model.Event
+import com.devfk.ma.screeningpractice.data.Model.DataEvent
+import io.realm.RealmResults
 
 
-class EventAdapter(nameItem: ArrayList<Event>) : BaseAdapter(){
+class EventAdapter(nameItem: RealmResults<DataEvent>) : BaseAdapter(){
     private val item = nameItem
 
     @SuppressLint("ViewHolder")
@@ -30,11 +31,11 @@ class EventAdapter(nameItem: ArrayList<Event>) : BaseAdapter(){
         val detail = view.findViewById<TextView>(R.id.txvDetailEvent)
         val image = view.findViewById<ImageView>(R.id.imgEvent)
 
-        title.text = item[position].title
-        date.text = item[position].date
-        detail.text = item[position].detail
+        title.text = item[position]!!.title
+        date.text = item[position]!!.date
+        detail.text = item[position]!!.detail
 
-        for (tag in item[position].hashtag){
+        for (tag in item[position]!!.hashtag){
             var text = TextView(parent.context)
             text.text = tag
             text.setTextColor(parent.context.resources.getColor(R.color.white))
@@ -44,7 +45,7 @@ class EventAdapter(nameItem: ArrayList<Event>) : BaseAdapter(){
             hashtag.addView(text)
         }
 
-        image.setBackgroundResource(item[position].image)
+        image.setBackgroundResource(item[position]!!.image)
         image.scaleType = ImageView.ScaleType.CENTER_CROP
 
         return view

@@ -9,11 +9,11 @@ import android.view.ViewGroup
 import android.widget.*
 import com.devfk.ma.screeningpractice.ui.Component.CircleTransform
 import com.devfk.ma.screeningpractice.R
-import com.devfk.ma.screeningpractice.data.Model.Data
+import com.devfk.ma.screeningpractice.data.Model.DataGuest
 import com.squareup.picasso.Picasso
 
 
-class GuestAdapter(context: Context, nameItem: ArrayList<Data>) : BaseAdapter(){
+class GuestAdapter(context: Context, nameItem: ArrayList<DataGuest>) : BaseAdapter(){
     private val item = nameItem
     lateinit var layout:RelativeLayout
 
