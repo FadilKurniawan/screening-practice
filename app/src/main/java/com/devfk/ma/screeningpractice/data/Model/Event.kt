@@ -23,6 +23,6 @@ open class DataEvent(
     var image:Int=0,
     var hashtag:RealmList<String> = RealmList(),
     var detail:String = "",
-    var lat:String = "",
-    var long: String = ""
+    var lattitude:String = "",
+    var longtitude: String = ""
 ): RealmObject()

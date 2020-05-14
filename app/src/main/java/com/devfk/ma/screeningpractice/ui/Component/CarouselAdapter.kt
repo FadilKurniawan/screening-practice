@@ -8,15 +8,17 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import com.devfk.ma.screeningpractice.R
+import com.devfk.ma.screeningpractice.data.Model.DataEvent
 import com.devfk.ma.screeningpractice.data.Model.Event
+import io.realm.RealmResults
 
 
 class CarouselAdapter(
-    list:ArrayList<Event>,
+    list: RealmResults<DataEvent>,
     context: Context?
 ) : PagerAdapter() {
 
-    private var lisEvent:ArrayList<Event> = list
+    private var lisEvent: RealmResults<DataEvent> = list
     private lateinit var layoutInflater: LayoutInflater
     private val context: Context? = context
 
@@ -37,12 +39,12 @@ class CarouselAdapter(
         var date = view.findViewById<TextView>(R.id.txvDateEvent)
 
 
-        img.setImageResource(lisEvent[position].image)
+        img.setImageResource(lisEvent[position]!!.image)
         img.scaleType = ImageView.ScaleType.CENTER_CROP
 
-        title.text = lisEvent[position].title
-        description.text = lisEvent[position].detail
-        date.text = lisEvent[position].date
+        title.text = lisEvent[position]!!.title
+        description.text = lisEvent[position]!!.detail
+        date.text = lisEvent[position]!!.date
 
         container.addView(view,0)
         return view

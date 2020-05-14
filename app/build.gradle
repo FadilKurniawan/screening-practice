@@ -69,7 +69,8 @@ dependencies {
 
     //card view
     implementation "androidx.cardview:cardview:1.0.0"
-
+    //mapbox
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.0'
 
     implementation 'com.android.support:multidex:1.0.3'
 }

@@ -5,11 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.devfk.ma.screeningpractice.R
 import com.devfk.ma.screeningpractice.data.Model.DataEvent
 import com.devfk.ma.screeningpractice.data.Model.Event
 import com.devfk.ma.screeningpractice.ui.Adapter.EventAdapter
+import com.devfk.ma.screeningpractice.ui.Fragment.MapFragment
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_event.*
 import kotlinx.android.synthetic.main.app_bar.*
@@ -34,12 +36,17 @@ class EventActivity : AppCompatActivity() , AdapterView.OnItemClickListener, Vie
         realm = Realm.getDefaultInstance()
         var itemEvent = realm.where(DataEvent::class.java).sort("id").findAll()
 
+        for (index in 0 until itemEvent.size){
+            println("*** long: $index : ${itemEvent[index]!!.longtitude}")
+        }
+
         lv_event.adapter = EventAdapter(itemEvent)
         lv_event.onItemClickListener = this
 
         btn_back.setOnClickListener(this)
         btn_media.setOnClickListener(this)
         btn_search.setOnClickListener(this)
+
         btn_media.visibility = View.VISIBLE
         btn_search.visibility = View.VISIBLE
     }
@@ -63,6 +70,7 @@ class EventActivity : AppCompatActivity() , AdapterView.OnItemClickListener, Vie
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         var item:DataEvent = parent?.getItemAtPosition(position) as DataEvent
+        Toast.makeText(this,"${item.longtitude} , ${item.lattitude}",Toast.LENGTH_LONG).show()
         result = item.title
         onBackPressed()
     }
@@ -74,7 +82,7 @@ class EventActivity : AppCompatActivity() , AdapterView.OnItemClickListener, Vie
             }
             R.id.btn_media ->{
                 if(fragment_container.visibility== View.GONE||supportFragmentManager.backStackEntryCount==0) {
-//                    onMediaClick()
+                    onMediaClick()
                     btn_media.setBackgroundResource(R.drawable.ic_list_view)
                 }else{
                     onBackPressed()
@@ -90,13 +98,13 @@ class EventActivity : AppCompatActivity() , AdapterView.OnItemClickListener, Vie
     }
 
     private fun onMediaClick() {
-//            fragment_container.visibility = View.VISIBLE
-//            val mapFragment = MapFragment.newInstance(eventList)
-//            val manager = supportFragmentManager
-//            val transaction = manager.beginTransaction()
-//            transaction.replace(R.id.fragment_container,mapFragment)
-//            transaction.addToBackStack(null)
-//            transaction.commit()
+            fragment_container.visibility = View.VISIBLE
+            val mapFragment = MapFragment.newInstance()
+            val manager = supportFragmentManager
+            val transaction = manager.beginTransaction()
+            transaction.replace(R.id.fragment_container,mapFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
     }
 
 

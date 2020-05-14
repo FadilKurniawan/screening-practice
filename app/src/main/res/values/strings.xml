@@ -41,14 +41,14 @@
         <item> March 20 2020</item>
     </string-array>
 
-    <string-array name="event_list_lat">
+    <string-array name="event_list_lattitude">
         <item>-6.901267</item>
         <item>-6.910463</item>
         <item>-6.908583</item>
         <item>-6.917161</item>
     </string-array>
 
-    <string-array name="event_list_long">
+    <string-array name="event_list_longtitude">
         <item>107.618681</item>
         <item>107.619621</item>
         <item>107.616208</item>
@@ -63,8 +63,7 @@
 
     <string name="copyright">Copyright &#169; 2020 Suitmedia All rights reserved.</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mapBox_accessToken">pk.eyJ1IjoiZmFkaWxrdXJuaWF3YW4iLCJhIjoiY2thNjJvd3U0MDFkcDM1cGMxcDUzazB2NCJ9.rUAOMx6HZIvjrhia0bog5A</string>
 
 
 </resources>

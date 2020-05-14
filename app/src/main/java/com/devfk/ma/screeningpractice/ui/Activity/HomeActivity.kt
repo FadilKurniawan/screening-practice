@@ -7,10 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.devfk.ma.screeningpractice.R
+import com.devfk.ma.screeningpractice.data.Model.DataEvent
 import com.devfk.ma.screeningpractice.data.Model.User
 import com.devfk.ma.screeningpractice.ui.Component.CustomAlertDialog
-import com.facebook.AccessToken
-import com.facebook.login.LoginManager
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_home.*
@@ -26,6 +26,8 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener{
     }
 
     lateinit var realm: Realm
+    //Firebase Analytics
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,9 +37,13 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener{
 
     private fun initialization() {
         realm = Realm.getDefaultInstance()
+        //firebase Analytics
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this)
+
         val user = realm.where(User::class.java).findFirst()
         if (user != null) {
-            val str =user.name
+            val str = user.name
+            pushAnalytics("login_name","login_executed",str)
             txvName.text = str
         }else{
             signOut()
@@ -70,18 +76,26 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener{
         if(requestCode == EVENT_CODE_ACTIVITY){
             if(resultCode == Activity.RESULT_OK){
                 val text = data!!.getStringExtra("event")
+                pushAnalytics("event_name","event_selected",text)
                 btnEvent.text = text
             }
         }else if(requestCode == GUEST_CODE_ACTIVITY){
             if(resultCode == Activity.RESULT_OK){
                 val text = data!!.getStringExtra("guestName")
                 val num = data.getStringExtra("guestAge")
+                pushAnalytics("guest_name","guest_selected",text)
                 btnGuest.text = text
                 pop(num.toInt())
             }
         }else{
             super.onActivityResult(requestCode, resultCode, data)
         }
+    }
+
+    private fun pushAnalytics(bundle_param: String, selected:String, value: String) {
+        val bundle = Bundle()
+        bundle.putString(bundle_param, value)
+        firebaseAnalytics?.logEvent(selected, bundle)
     }
 
     private fun pop(i: Int) {
@@ -126,7 +140,6 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener{
             realm.delete(User::class.java)
         }
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

@@ -22,9 +22,9 @@ class ScreeningDB:Application() {
 
 
         val realm:Realm = Realm.getDefaultInstance()
-//        realm.executeTransaction{
-//            realm.deleteAll()
-//        }
+        realm.executeTransaction{
+            realm.deleteAll()
+        }
 
         val isEventStorage = realm.where(DataEvent::class.java).sort("id").findFirst()
 
@@ -33,8 +33,8 @@ class ScreeningDB:Application() {
 
                 val eventTitle = resources.getStringArray(R.array.event_list_title)
                 val eventDate = resources.getStringArray(R.array.event_list_date)
-                val eventLat = resources.getStringArray(R.array.event_list_lat)
-                val eventLong = resources.getStringArray(R.array.event_list_long)
+                val eventLat = resources.getStringArray(R.array.event_list_lattitude)
+                val eventLong = resources.getStringArray(R.array.event_list_longtitude)
                 val eventHashtag = resources.getStringArray(R.array.event_list_hashtag)
 
                 for (eventCount in 0 until 4) {
@@ -45,8 +45,9 @@ class ScreeningDB:Application() {
                     for (hashtagCount in 0 until 3) {
                         eventItem.hashtag.add(eventHashtag[hashtagCount])
                     }
-                    eventItem.lat = eventLat[eventCount]
-                    eventItem.long = eventLong[eventCount]
+                    eventItem.lattitude = eventLat[eventCount]
+                    eventItem.longtitude = eventLong[eventCount]
+
                     eventItem.image = getDrawableFromResource(eventCount)
                 }
             }
