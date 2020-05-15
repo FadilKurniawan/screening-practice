@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.devfk.ma.screeningpractice.R
 import com.devfk.ma.screeningpractice.data.Model.DataEvent
-import com.devfk.ma.screeningpractice.data.Model.Event
 import com.devfk.ma.screeningpractice.ui.Adapter.EventAdapter
 import com.devfk.ma.screeningpractice.ui.Fragment.MapFragment
 import io.realm.Realm
@@ -20,7 +19,6 @@ import kotlinx.android.synthetic.main.app_bar.*
 class EventActivity : AppCompatActivity() , AdapterView.OnItemClickListener, View.OnClickListener{
 
     var result:String =""
-    var eventList:ArrayList<Event> = ArrayList<Event>()
     lateinit var realm:Realm
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,10 +33,6 @@ class EventActivity : AppCompatActivity() , AdapterView.OnItemClickListener, Vie
 
         realm = Realm.getDefaultInstance()
         var itemEvent = realm.where(DataEvent::class.java).sort("id").findAll()
-
-        for (index in 0 until itemEvent.size){
-            println("*** long: $index : ${itemEvent[index]!!.longtitude}")
-        }
 
         lv_event.adapter = EventAdapter(itemEvent)
         lv_event.onItemClickListener = this

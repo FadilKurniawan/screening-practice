@@ -5,16 +5,6 @@ import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 
-data class Event(
-    val title:String,
-    val date:String,
-    val image:Int,
-    val hashtag:List<String>,
-    val detail:String,
-    val lat:String,
-    val long: String
-)
-
 open class DataEvent(
     @PrimaryKey
     var id:Int=0,

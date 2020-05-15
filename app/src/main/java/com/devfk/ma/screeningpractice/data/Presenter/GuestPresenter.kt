@@ -2,9 +2,11 @@ package com.devfk.ma.screeningpractice.data.Presenter
 
 import android.content.Context
 import com.devfk.ma.screeningpractice.data.Interface.IGuest
+import com.devfk.ma.screeningpractice.data.Model.DataGuest
 import com.devfk.ma.screeningpractice.data.service.APIService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import io.realm.Realm
 
 
 class GuestPresenter (context:Context){

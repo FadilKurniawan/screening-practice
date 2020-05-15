@@ -11,9 +11,10 @@ import com.devfk.ma.screeningpractice.ui.Component.CircleTransform
 import com.devfk.ma.screeningpractice.R
 import com.devfk.ma.screeningpractice.data.Model.DataGuest
 import com.squareup.picasso.Picasso
+import io.realm.RealmResults
 
 
-class GuestAdapter(context: Context, nameItem: ArrayList<DataGuest>) : BaseAdapter(){
+class GuestAdapter(context: Context, nameItem: RealmResults<DataGuest>) : BaseAdapter(){
     private val item = nameItem
     lateinit var layout:RelativeLayout
 
@@ -28,7 +29,7 @@ class GuestAdapter(context: Context, nameItem: ArrayList<DataGuest>) : BaseAdapt
         var img = view.findViewById<ImageView>(R.id.imgGuest)
         layout = view.findViewById<RelativeLayout>(R.id.grid_layout)
 
-        name.text = item[position].firstName + item[position].lastName
+        name.text = item[position]!!.firstName + item[position]!!.lastName
 
 
 
@@ -41,7 +42,7 @@ class GuestAdapter(context: Context, nameItem: ArrayList<DataGuest>) : BaseAdapt
             }
 
         Picasso.get()
-            .load(item[position].avatar)
+            .load(item[position]!!.avatar)
             .transform(CircleTransform())
             .fit()
             .placeholder(R.drawable.bg_rounded_user)

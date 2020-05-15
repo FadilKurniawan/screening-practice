@@ -15,6 +15,8 @@ import com.devfk.ma.screeningpractice.data.Interface.IGuest
 import com.devfk.ma.screeningpractice.data.Model.DataGuest
 import com.devfk.ma.screeningpractice.data.Model.Response
 import com.devfk.ma.screeningpractice.data.Presenter.GuestPresenter
+import io.realm.Realm
+import io.realm.RealmResults
 import kotlinx.android.synthetic.main.activity_guest.*
 import kotlinx.android.synthetic.main.app_bar.*
 
@@ -28,7 +30,8 @@ class GuestActivity : AppCompatActivity(), AdapterView.OnItemClickListener , IGu
     var listData: ArrayList<DataGuest> = ArrayList()
     lateinit var guestAdapter: GuestAdapter
     lateinit var swipe: SwipeRefreshLayout
-
+    lateinit var realm: Realm
+    lateinit var dataGuest:RealmResults<DataGuest>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,19 @@ class GuestActivity : AppCompatActivity(), AdapterView.OnItemClickListener , IGu
         initialization()
         RefreshListener()
         ScrolldownListener()
+    }
+
+    private fun initialization() {
+        realm = Realm.getDefaultInstance()
+        headerText.text = resources.getString(R.string.txt_toolbar_title_guest)
+        GuestPresenter(this).getDataGuest(pages,per_pages)
+        loadview.visibility = View.VISIBLE
+        loadingMore.visibility = View.GONE
+        gridView.onItemClickListener = this
+        btn_back.setOnClickListener(this)
+        btn_media.visibility = View.GONE
+        btn_search.visibility = View.GONE
+        swipe = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
     }
 
     private fun ScrolldownListener() {
@@ -62,17 +78,6 @@ class GuestActivity : AppCompatActivity(), AdapterView.OnItemClickListener , IGu
         })
     }
 
-    private fun initialization() {
-        headerText.text = resources.getString(R.string.txt_toolbar_title_guest)
-        GuestPresenter(this).getDataGuest(pages,per_pages)
-        loadview.visibility = View.VISIBLE
-        loadingMore.visibility = View.GONE
-        gridView.onItemClickListener = this
-        btn_back.setOnClickListener(this)
-        btn_media.visibility = View.GONE
-        btn_search.visibility = View.GONE
-        swipe = findViewById<SwipeRefreshLayout>(R.id.swipeContainer)
-    }
 
     private fun RefreshListener() {
         swipe.setOnRefreshListener {
@@ -103,24 +108,33 @@ class GuestActivity : AppCompatActivity(), AdapterView.OnItemClickListener , IGu
         onBackPressed()
     }
 
-    override fun onGuestList(guest: Response<DataGuest>) {
+    override fun onGuestList(response: Response<DataGuest>) {
         if(swipe.isRefreshing){
             swipe.isRefreshing = false
         }
 
-        if(guest.page!! >pages){
+        if(response.page!! >pages){
             loadingMore.visibility = View.GONE
-            pages = guest.page
-            guest.data?.let { listData.addAll(it) }
+            pages = response.page
+            addDataGuest(response)
             guestAdapter.notifyDataSetChanged()
             loadMore = false
         }else {
-            listData.clear()
-            total_pages = guest.totalPages
-            guest.data?.let { listData.addAll(it) }
-            guestAdapter = GuestAdapter(this,listData)
+            realm.executeTransaction {
+                realm.delete(DataGuest::class.java)
+            }
+            addDataGuest(response)
+            dataGuest = realm.where(DataGuest::class.java).findAll()
+            total_pages = response.totalPages
+            guestAdapter = GuestAdapter(this,dataGuest)
             gridView.adapter =  guestAdapter
             loadview.visibility = View.GONE
+        }
+    }
+
+    private fun addDataGuest(response: Response<DataGuest>) {
+        realm.executeTransaction {
+            realm.insert(response.data)
         }
     }
 

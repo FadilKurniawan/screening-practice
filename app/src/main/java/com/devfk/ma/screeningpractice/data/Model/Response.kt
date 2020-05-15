@@ -3,6 +3,7 @@ package com.devfk.ma.screeningpractice.data.Model
 
 import com.devfk.ma.screeningpractice.data.Model.Ad
 import com.google.gson.annotations.SerializedName
+import io.realm.RealmList
 
 data class Response<T>(
     @SerializedName("ad")
