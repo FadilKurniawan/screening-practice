@@ -19,6 +19,9 @@ class GuestPresenter (context:Context){
             .subscribeOn(Schedulers.io())
             .subscribe({ it ->
                 println("*** response: $it")
+                Realm.getDefaultInstance().executeTransaction {realm ->
+                    realm.insertOrUpdate(it.data)
+                }
                 GuestView.onGuestList(it)
             }, {
                 GuestView.onDataError(it.message)

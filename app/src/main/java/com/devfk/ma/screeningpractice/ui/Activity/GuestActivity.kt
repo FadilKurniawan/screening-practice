@@ -112,29 +112,17 @@ class GuestActivity : AppCompatActivity(), AdapterView.OnItemClickListener , IGu
         if(swipe.isRefreshing){
             swipe.isRefreshing = false
         }
-
         if(response.page!! >pages){
             loadingMore.visibility = View.GONE
             pages = response.page
-            addDataGuest(response)
             guestAdapter.notifyDataSetChanged()
             loadMore = false
         }else {
-            realm.executeTransaction {
-                realm.delete(DataGuest::class.java)
-            }
-            addDataGuest(response)
             dataGuest = realm.where(DataGuest::class.java).findAll()
             total_pages = response.totalPages
             guestAdapter = GuestAdapter(this,dataGuest)
             gridView.adapter =  guestAdapter
             loadview.visibility = View.GONE
-        }
-    }
-
-    private fun addDataGuest(response: Response<DataGuest>) {
-        realm.executeTransaction {
-            realm.insert(response.data)
         }
     }
 

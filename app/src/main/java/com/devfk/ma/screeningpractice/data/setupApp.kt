@@ -41,9 +41,9 @@ class setupApp:Application() {
 
     private fun InsertingEventData() {
         val realm:Realm = Realm.getDefaultInstance()
-//        realm.executeTransaction{
-//            realm.deleteAll()
-//        }
+        realm.executeTransaction{
+            realm.deleteAll()
+        }
         val isEventStorage = realm.where(DataEvent::class.java).sort("id").findFirst()
         if(isEventStorage == null){
             realm.executeTransaction {
