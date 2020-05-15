@@ -27,9 +27,9 @@ import io.realm.Realm
 import io.realm.kotlin.createObject
 import kotlinx.android.synthetic.main.form_login.*
 
-class MainActivity : AppCompatActivity(),View.OnClickListener {
+class LoginActivity : AppCompatActivity(),View.OnClickListener {
     companion object {
-        fun getLaunchIntent(from: Context) = Intent(from, MainActivity::class.java).apply {
+        fun getLaunchIntent(from: Context) = Intent(from, LoginActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         }
     }
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
         initialization()
     }
@@ -84,12 +84,12 @@ class MainActivity : AppCompatActivity(),View.OnClickListener {
 
             override fun onCancel() {
                 loadview.visibility = View.GONE
-                Toast.makeText(this@MainActivity,"Canceled",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@LoginActivity,"Canceled",Toast.LENGTH_LONG).show()
             }
 
             override fun onError(exception: FacebookException) {
                 loadview.visibility = View.GONE
-                Toast.makeText(this@MainActivity,"error: ${exception.toString()}",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@LoginActivity,"error: ${exception.toString()}",Toast.LENGTH_LONG).show()
             }
         })
     }

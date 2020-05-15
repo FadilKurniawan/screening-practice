@@ -22,10 +22,15 @@
     <string name="txt_button_FacebookSignIn">Sign in with Facebook</string>
 
     <!--    txv-->
+    <string name="txt_version">Version </string>
     <string name="txt_name">Hallo,</string>
     <string name="txt_detail_event_item">Lorem ipsum dolor sit amet, consectetur adipiscing... </string> <!--    elit. Suspendisse nunc mauris, eleifend nec tristique vitae, maximus id arcu. Morbi quis aliquet justo, vel porttitor lorem...-->
     <string name="txt_title_activity_home">Welcome</string>
     <string name="txt_subtitle_activity_home">This is app for suitmedia mobile developer test</string>
+
+<!--remote config-->
+    <string name="txt_remote_version_app">version_app</string>
+
 
     <string-array name="event_list_title">
         <item> Pekan #KreatifDisaatSulit </item>
@@ -60,6 +65,8 @@
         <item>#highlight F3</item>
         <item>#event</item>
     </string-array>
+
+
 
     <string name="copyright">Copyright &#169; 2020 Suitmedia All rights reserved.</string>
 

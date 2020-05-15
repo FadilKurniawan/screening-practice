@@ -24,7 +24,7 @@ class GuestAdapter(context: Context, nameItem: ArrayList<DataGuest>) : BaseAdapt
             getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view    = inflater.inflate(R.layout.grid_item,null)
         // Get the custom view widgets reference
-        val name = view.findViewById<TextView>(R.id.txvNameGuest)
+        val name = view.findViewById<TextView>(R.id.tvNameGuest)
         var img = view.findViewById<ImageView>(R.id.imgGuest)
         layout = view.findViewById<RelativeLayout>(R.id.grid_layout)
 

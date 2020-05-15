@@ -25,10 +25,10 @@ class EventAdapter(nameItem: RealmResults<DataEvent>) : BaseAdapter(){
         getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view    = inflater.inflate(R.layout.list_item,null)
         // Get the custom view widgets reference
-        val title = view.findViewById<TextView>(R.id.txvNameEvent)
-        val date = view.findViewById<TextView>(R.id.txvDateEvent)
+        val title = view.findViewById<TextView>(R.id.tvNameEvent)
+        val date = view.findViewById<TextView>(R.id.tvDateEvent)
         val hashtag = view.findViewById<LinearLayout>(R.id.layTagEvent)
-        val detail = view.findViewById<TextView>(R.id.txvDetailEvent)
+        val detail = view.findViewById<TextView>(R.id.tvDetailEvent)
         val image = view.findViewById<ImageView>(R.id.imgEvent)
 
         title.text = item[position]!!.title

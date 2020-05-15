@@ -17,13 +17,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:scaleType="center"
-                app:layout_constraintBottom_toTopOf="@+id/txvNameGuest"
+                app:layout_constraintBottom_toTopOf="@+id/tvNameGuest"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/txvNameGuest"
+                android:id="@+id/tvNameGuest"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"

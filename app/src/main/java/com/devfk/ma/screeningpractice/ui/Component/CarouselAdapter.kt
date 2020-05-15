@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 import com.devfk.ma.screeningpractice.R
 import com.devfk.ma.screeningpractice.data.Model.DataEvent
-import com.devfk.ma.screeningpractice.data.Model.Event
 import io.realm.RealmResults
 
 
@@ -34,9 +33,9 @@ class CarouselAdapter(
         var view =layoutInflater.inflate(R.layout.card_carousel_item,container,false)
 
         var img = view.findViewById<ImageView>(R.id.imgEvent)
-        var title = view.findViewById<TextView>(R.id.txvNameEvent)
-        var description = view.findViewById<TextView>(R.id.txvDetailEvent)
-        var date = view.findViewById<TextView>(R.id.txvDateEvent)
+        var title = view.findViewById<TextView>(R.id.tvNameEvent)
+        var description = view.findViewById<TextView>(R.id.tvDetailEvent)
+        var date = view.findViewById<TextView>(R.id.tvDateEvent)
 
 
         img.setImageResource(lisEvent[position]!!.image)

@@ -45,7 +45,7 @@
                 android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/txvNameEvent"
+                    android:id="@+id/tvNameEvent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
@@ -64,7 +64,7 @@
                     android:visibility="gone" />
 
                 <TextView
-                    android:id="@+id/txvDetailEvent"
+                    android:id="@+id/tvDetailEvent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
@@ -76,7 +76,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/txvDateEvent"
+                    android:id="@+id/tvDateEvent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"

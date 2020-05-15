@@ -1,36 +1,52 @@
-package com.devfk.ma.screeningpractice.data.database
+package com.devfk.ma.screeningpractice.data
 
 import android.app.Application
+import android.app.Notification
+import androidx.core.app.NotificationCompat
 import com.devfk.ma.screeningpractice.R
 import com.devfk.ma.screeningpractice.data.Model.DataEvent
+import com.devfk.ma.screeningpractice.data.Notification.NotificationHandler
+import com.onesignal.OneSignal
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.realm.kotlin.createObject
 
-class ScreeningDB:Application() {
+class setupApp:Application() {
     override fun onCreate() {
         super.onCreate()
+        OneSignalInitialization()
+        RealmInitialization()
+        InsertingEventData()
+    }
 
+    private fun OneSignalInitialization() {
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+            .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+            .setNotificationOpenedHandler(NotificationHandler(this))
+            .setNotificationReceivedHandler(NotificationHandler(this))
+            .unsubscribeWhenNotificationsAreDisabled(true)
+            .init()
+    }
+
+    private fun RealmInitialization() {
         Realm.init(this)
-
         val configuration = RealmConfiguration.Builder()
             .name("session.db")
             .deleteRealmIfMigrationNeeded()
             .schemaVersion(0)
             .build()
         Realm.setDefaultConfiguration(configuration)
+    }
 
-
+    private fun InsertingEventData() {
         val realm:Realm = Realm.getDefaultInstance()
-        realm.executeTransaction{
-            realm.deleteAll()
-        }
-
+//        realm.executeTransaction{
+//            realm.deleteAll()
+//        }
         val isEventStorage = realm.where(DataEvent::class.java).sort("id").findFirst()
-
         if(isEventStorage == null){
             realm.executeTransaction {
-
                 val eventTitle = resources.getStringArray(R.array.event_list_title)
                 val eventDate = resources.getStringArray(R.array.event_list_date)
                 val eventLat = resources.getStringArray(R.array.event_list_lattitude)
@@ -47,7 +63,6 @@ class ScreeningDB:Application() {
                     }
                     eventItem.lattitude = eventLat[eventCount]
                     eventItem.longtitude = eventLong[eventCount]
-
                     eventItem.image = getDrawableFromResource(eventCount)
                 }
             }

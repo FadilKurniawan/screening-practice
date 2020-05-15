@@ -70,7 +70,6 @@ class EventActivity : AppCompatActivity() , AdapterView.OnItemClickListener, Vie
 
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         var item:DataEvent = parent?.getItemAtPosition(position) as DataEvent
-        Toast.makeText(this,"${item.longtitude} , ${item.lattitude}",Toast.LENGTH_LONG).show()
         result = item.title
         onBackPressed()
     }

@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.devfk.ma.screeningpractice.R
-import com.devfk.ma.screeningpractice.data.Model.DataEvent
 import com.devfk.ma.screeningpractice.data.Model.User
 import com.devfk.ma.screeningpractice.ui.Component.CustomAlertDialog
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -44,7 +43,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener{
         if (user != null) {
             val str = user.name
             pushAnalytics("login_name","login_executed",str)
-            txvName.text = str
+            tvName.text = str
         }else{
             signOut()
         }
@@ -132,7 +131,7 @@ class HomeActivity : AppCompatActivity(), View.OnClickListener{
         if (user != null) {
             FirebaseAuth.getInstance().signOut()
         }
-        startActivity(MainActivity.getLaunchIntent(this))
+        startActivity(LoginActivity.getLaunchIntent(this))
     }
 
     private fun deleteUser() {
